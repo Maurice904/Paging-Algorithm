@@ -1,0 +1,44 @@
+0000 W D0
+Page fault        0
+writting          0
+0001 R  1,D0
+Page fault        1
+reading           1
+0002 R  2,1,D0
+Page fault        2
+reading           2
+0003 R  3,2,1,D0
+Page fault        3
+reading           3
+0002 W D2,3,1,D0
+writting          2
+0004 R 4,D2,3,1 out D0
+Page fault        4 
+Disk write        0
+0003 R 3,4,D2,1
+reading           4
+0003 W D3,4,D2,1
+reading           3 
+writting          3
+0000 R 0,D3,4,D2 out 1
+Page fault        0 
+Discard           1
+reading           0
+0001 R 1,0,D3,4 out D2
+Page fault        1 
+Disk write        2 
+reading           1
+0005 R 5,1,0,D3 out 4
+Page fault        5 
+Discard           4
+reading           5
+0002 R 2,5,1,0 out D3
+Page fault        2 
+Disk write        3 
+reading           2
+
+total memory frames:  4
+events in trace:      12
+total disk reads:     9
+total disk writes:    3
+page fault rate:      0.75
